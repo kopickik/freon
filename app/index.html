@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="mainApp">
     <head>
         <meta charset="utf-8">
         <title>freon</title>
@@ -39,6 +39,11 @@
                 <% });%>
             </script>
         <!-- flickrSearch template END -->
+        <div ng-controller="MainController">
+            <input type="button" ng-click="getAsyncMessage()" value="Get me an async message">
+            <input type="button" ng-click="cancelRequested=true" value="Cancel Fetching Message"><br>
+            <p>Promise status: <strong>{{status}}</strong></p>
+        </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -53,6 +58,7 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/underscore/underscore-min.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
