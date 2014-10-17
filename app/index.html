@@ -26,6 +26,19 @@
         <![endif]-->
 
         <p>Hello! This is html5 boilerplate.</p>
+        <!-- flickrSearch template BEGIN -->
+            <form id="flickrSearch">
+                <input type="text" name="tag" id="query">
+                <input type="submit" name="submit" value="submit">
+            </form>
+            <div id="lastQuery"></div>
+            <ol id="searchResults"></ol>
+            <script id="resultTemplate" type="text/html">
+                <% _.each(items, function (item) {%>
+                    <li><a href="<%= item.link %>" class="item" target="_blank"><img src="<%= item.media.m %>" alt="" class="flickrMediaItem"></a></li>
+                <% });%>
+            </script>
+        <!-- flickrSearch template END -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -40,6 +53,7 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/underscore/underscore-min.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
