@@ -44,6 +44,13 @@
             <input type="button" ng-click="cancelRequested=true" value="Cancel Fetching Message"><br>
             <p>Promise status: <strong>{{status}}</strong></p>
         </div>
+        <div ng-controller="WeatherController">
+            City: <input type="text" ng-model="city" placeholder="Enter city name"><br>
+            Country: <input type="text" ng-model="country" placeholder="Enter country name"><br>
+            <button ng-click="getWeather()">Get Weather</button>
+            <br><br><strong>Weather condition: <span>{{weatherDescription}}</span></strong>
+            <img ng-src="http://openweathermap.org/img/w/{{weatherIcon}}.png" alt="">
+        </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
