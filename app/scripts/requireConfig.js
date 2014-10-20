@@ -54,4 +54,4 @@ require([
     'angular',
     'angularRoute',
     'text',
-    'main'], function($, Velocity, _, angular){});
+    'main'], function($, Velocity, _, angular, main){});
