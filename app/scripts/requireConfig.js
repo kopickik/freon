@@ -48,8 +48,6 @@ require.config({
 require([
     'jquery',
     'velocity',
-    'velocity-ui',
-    'blast',
     'underscore',
     'angular',
     'angularRoute',

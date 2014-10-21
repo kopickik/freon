@@ -1,6 +1,8 @@
-require(['jquery', 'underscore'], function ($, _) {
-  //(function ( $ ) {
+require(['jquery', 'underscore', 'angular'], function ($, _, angular) {
     'use strict';
+    (function ($) {
+      console.log($);
+    });
     var o = $({});
 
     $.subscribe = function() {
@@ -8,13 +10,13 @@ require(['jquery', 'underscore'], function ($, _) {
     };
 
     $.unsubscribe = function() {
-      o.on.apply(o. arguments);
+      o.on.apply(o, arguments);
     };
 
     $.publish = function() {
       o.trigger.apply(o, arguments);
     };
-      var resultTemplate = _.template($('#resultTemplate').html());
+    var resultTemplate = _.template($('#resultTemplate').html());
 
     $.subscribe('/search/tags', function (e, tags) {
       $('#lastQuery').html('<p>Searched for: <strong>' + tags + '</strong></p>');
@@ -45,13 +47,9 @@ require(['jquery', 'underscore'], function ($, _) {
         if (!data.items.length) {
           return;
         }
-        $.publish('/search/resultSet', { items: data.items } );
+        $.publish('/search/resultSet', {items: data.items});
       });
     });
-});
-
-require(['angular'], function (angular) {
-  'use strict';
   angular.module('mainApp', [])
   .controller('MainController', ['$scope', '$q', '$interval', function($scope, $q, $interval) {
     // we will use $q here
@@ -108,9 +106,9 @@ require(['angular'], function (angular) {
   angular.module('mainApp').controller('WeatherController', function($scope, WeatherService) {
     $scope.getWeather = function() {
       $scope.weatherDescription = 'Fetching...';
-      WeatherService.getWeather($scope.city, $scope.country).then(function(data) {
-        $scope.weatherDescription = data//.description;
-        $scope.weatherIcon = data.icon;
+      WeatherService.getWeather($scope.city, $scope.country).then(function (weather) {
+        $scope.weatherDescription = weather;//.description;
+        $scope.weatherIcon = weather.icon;
       }, function() {
         $scope.weatherDescription = 'Could not obtain data.';
       });
